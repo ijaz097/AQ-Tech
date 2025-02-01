@@ -1,0 +1,226 @@
+/* Hero Section for About Page */
+#hero-about {
+    background: url('../images/about.jpg') no-repeat center center;
+    background-size: cover;
+    color: #ffffff;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+#hero-about h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#hero-about p {
+    font-size: 1.2rem;
+}
+
+/* Company Overview Section */
+#company-overview {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fffefd;
+}
+
+#company-overview h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#company-overview p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Team Section */
+#team {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#team h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Team Member Card */
+.team-member {
+    background: #fff;
+    padding: 20px; /* Reduced padding */
+    border-radius: 8px;
+    text-align: center;
+    width: 250px; /* Smaller width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.team-member img {
+    width: 100%;
+    height: 180px; /* Fixed height for uniform images */
+    object-fit: cover; /* Ensures images are neatly cropped */
+    border-radius: 8px; /* Slightly rounded, but NOT circular */
+    margin-bottom: 15px;
+}
+
+/* Text Styling */
+.team-member h3 {
+    font-size: 1.3rem; /* Slightly reduced */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* CTA Section */
+#cta {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+}
+
+#cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+#cta p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#cta .cta-button {
+    padding: 10px 20px;
+    background-color: #fbb13c;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#cta .cta-button:hover {
+    background-color: #444;
+}
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content .logo {
+    height: 80px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: background 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    background-color: #fbb13c;
+    border-radius: 5px;
+}
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 10%;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: #fbb13c;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.social-icons img {
+    width: 30px;
+    margin: 0 10px;
+        filter: none; /* Maintains the original colors */
+    
+        transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+footer p {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+#services {
+    height: auto;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: #fff;
+    text-align: center;
+}
