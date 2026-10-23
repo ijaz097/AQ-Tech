@@ -67,6 +67,7 @@ main:focus { outline: none; }
   .page-home .mobile-toggle { display: block; }
 }
 @media (max-width: 620px) {
+  .page-contact .whatsapp-float { display: none; }
   html { scroll-padding-top: 95px; }
   .page-home .footer-grid > div { grid-column: auto; }
   .page-home .footer-grid { grid-template-columns: 1fr; }
