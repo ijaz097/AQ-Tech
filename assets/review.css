@@ -1,0 +1,83 @@
+/* Shared accessibility rules load after each page's visual design. */
+:root {
+  --muted: #52657b;
+  --ink-soft: #374a5f;
+  --primary: #1255ce;
+  --primary-deep: #0d3ebe;
+  --primary-soft: #eaf2ff;
+}
+html { scroll-padding-top: 150px; }
+body { overflow-wrap: anywhere; }
+main:focus { outline: none; }
+.grid > *, .half-layout > *, .hero-grid > *, .footer-grid > * { min-width: 0; }
+.service-card, .package-card, .info-card, .step, .faq-card { color: var(--ink); }
+.fineprint, .price small, .hero-label small, .brand small { color: #52657b; }
+.footer .brand-name, .footer .brand-name span { color: #fff; }
+.footer .brand small { color: #b7c9e2; }
+.whatsapp-float { background: #087a50; }
+.popular-ribbon { background: #1255ce; }
+.btn-primary { background: #1255ce; color: #fff; }
+.btn-primary:hover { background: #0645b5; }
+.service-card:focus-visible { outline: 3px solid #1255ce; outline-offset: 4px; }
+:is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #1255ce;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px white;
+}
+.a11y-skip { position: fixed; transform: translateY(-150%); top: 12px; }
+.a11y-skip:focus { transform: none; }
+.prose a, .reading-width p a, .section-note a, .form-footer a { text-decoration: underline; text-underline-offset: .2em; }
+.field input::placeholder, .field textarea::placeholder { color: #596b80; opacity: 1; }
+.field input, .field select, .field textarea { border-color: #7e8fa4; }
+.contact-dot { flex-shrink: 0; }
+.page-home .hero { color: var(--ink); }
+.page-home .hero .tag--mint { color: #7af2df; background: #123d45; border-color: #427e85; }
+.page-home .hero h1 { color: white; }
+.page-home .hero h1 em { color: #55e2d4; }
+.page-home .hero p, .page-home .hero .sub-trust { color: #c6d6e9; }
+.page-home .feature-panel { color: var(--ink); }
+.page-home .feature-panel .mini-title { color: #0d3ebe; }
+.page-home .feature-list li::before { display: none; }
+.page-home .feature-list li { padding-left: 0; }
+.page-home .hero-label { right: 8px; left: auto; max-width: calc(100% - 16px); }
+.page-packages .page-hero .crumb, .page-packages .page-hero .crumb a { color: #c6d6e9; }
+.page-packages .page-hero > .container > p { color: #c6d6e9; }
+.page-packages .package-card { background: #fff; }
+.page-packages .package-card.popular { background: #f1f6ff; }
+.page-packages .tabs { background: #eaf0f8; }
+.page-packages .tab { color: #374a5f; background: white; }
+.page-packages .tab[aria-selected=true] { color: #0d3ebe; background: #eaf2ff; border-color: #1255ce; }
+.page-packages .page-hero .note { color: #c6d6e9; }
+.page-packages .tab-panel { display: block; }
+.page-packages .tab-panel + .tab-panel { margin-top: 28px; }
+.page-packages .tab-panel[hidden] { display: none; }
+.page-packages .tab-panel.active { margin-top: 0; }
+/* Navigation remains available when scripting is unavailable. */
+@media (max-width: 850px) {
+  .nav { position: relative; min-height: 76px; }
+  .nav-links { top: 100%; margin: 0; gap: 0; }
+  .js .nav-links { display: none; }
+  .js .nav-links.is-open { display: flex; max-height: calc(100dvh - 90px); overflow-y: auto; }
+  html:not(.js) .nav { flex-wrap: wrap; }
+  html:not(.js) .nav-links { position: static; display: flex; flex-basis: 100%; }
+  html:not(.js) .mobile-toggle { display: none; }
+  .mobile-toggle { min-width: 44px; min-height: 44px; padding: 6px; flex-shrink: 0; }
+  .nav > .btn { display: none; }
+  .page-home .nav-links { flex-direction: column; align-items: stretch; }
+  .page-home .mobile-toggle { display: block; }
+}
+@media (max-width: 620px) {
+  .page-contact .whatsapp-float { display: none; }
+  html { scroll-padding-top: 95px; }
+  .page-home .footer-grid > div { grid-column: auto; }
+  .page-home .footer-grid { grid-template-columns: 1fr; }
+  .page-home .button-row .btn { flex: auto; }
+  .page-home .hero-label { position: relative; right: auto; bottom: auto; margin-top: 10px; max-width: 100%; }
+  .footer-bottom { padding-bottom: 65px; }
+  .brand { min-width: 0; }
+  .field input, .field select, .field textarea { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

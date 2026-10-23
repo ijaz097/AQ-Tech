@@ -1,84 +1,82 @@
 (() => {
-  const normalizeIndexPath = () => {
-    const path = window.location.pathname;
-    if (!path.endsWith('/index.html')) return;
-
-    const url = new URL(window.location.href);
-    url.pathname = path.replace(/\/index\.html$/, '/');
-    window.location.replace(url.toString());
-  };
-
-  normalizeIndexPath();
-
-  if (location.protocol === 'file:') {
-    document.addEventListener('click', e => {
-      if (!(e.target instanceof Element) || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      const link = e.target.closest('a[href]');
-      if (!link) return;
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
-      const url = new URL(href, location.href);
-      if (url.origin !== location.origin) return;
-      if (url.pathname.endsWith('/index.html')) {
-        e.preventDefault();
-        window.location.href = url.pathname.replace(/\/index\.html$/, '/');
-      }
-    });
+  'use strict';
+  document.documentElement.classList.add('js');
+  if (location.protocol !== 'file:' && location.pathname.endsWith('/index.html')) {
+    const url = new URL(location.href);
+    url.pathname = url.pathname.replace(/\/index\.html$/, '/');
+    history.replaceState(null, '', url);
   }
-
-  const toggle = document.querySelector('.mobile-toggle'), nav = document.querySelector('.nav-links');
+  const toggle = document.querySelector('.mobile-toggle');
+  const nav = document.querySelector('.nav-links');
   if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
+    const setOpen = open => {
       toggle.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('is-open', open);
+    };
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
     });
+    document.addEventListener('click', event => {
+      if (!nav.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
+    });
+    nav.addEventListener('click', event => {
+      if (event.target.closest('a')) setOpen(false);
+    });
+    matchMedia('(min-width: 851px)').addEventListener('change', () => setOpen(false));
   }
-
-  const number = '923062142514';
-  function whatsapp(message) {
-    return 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
-  }
-
-  document.querySelectorAll('[data-package]').forEach(el => {
-    const pkg = el.dataset.package;
-    el.href = whatsapp(`Hello AQ Tech, I'd like a quotation for the ${pkg} CCTV package. Please confirm current availability and pricing.`);
-    el.target = '_blank';
-    el.rel = 'noopener noreferrer';
+  const whatsapp = message => 'https://wa.me/923062142514?text=' + encodeURIComponent(message);
+  document.querySelectorAll('[data-package], [data-service]').forEach(link => {
+    link.href = whatsapp(link.dataset.package
+      ? `Hello AQ Tech, I'd like a quotation for the ${link.dataset.package} CCTV package. Please confirm current availability and pricing.`
+      : `Hello AQ Tech, I would like to discuss your ${link.dataset.service} service. Please contact me with the next steps.`);
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
   });
-
-  document.querySelectorAll('[data-service]').forEach(el => {
-    el.href = whatsapp(`Hello AQ Tech, I would like to discuss your ${el.dataset.service} service. Please contact me with the next steps.`);
-    el.target = '_blank';
-    el.rel = 'noopener noreferrer';
-  });
-
-  const tabs = document.querySelectorAll('[role=tab]');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
+  document.querySelectorAll('[role=tablist]').forEach(list => {
+    const tabs = [...list.querySelectorAll('[role=tab]')];
+    const activate = tab => {
       tabs.forEach(other => {
         const selected = other === tab;
         other.setAttribute('aria-selected', String(selected));
         other.tabIndex = selected ? 0 : -1;
+        const panel = document.getElementById(other.getAttribute('aria-controls'));
+        if (panel) {
+          panel.hidden = !selected;
+          panel.classList.toggle('active', selected);
+        }
+      });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', event => {
+        let next;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === undefined) return;
+        event.preventDefault();
+        activate(tabs[next]);
+        tabs[next].focus();
       });
     });
+    if (tabs.length) activate(tabs.find(tab => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
   });
-
   const form = document.getElementById('quote-form');
   if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+    form.addEventListener('submit', event => {
+      event.preventDefault();
       if (!form.reportValidity()) return;
-
       const data = new FormData(form);
-      const clean = k => String(data.get(k) || '').trim();
-      const name = clean('name');
-      const phone = clean('phone');
-      const service = clean('service');
-      const details = clean('details');
-      const message = `Hello AQ Tech, I would like a quotation.\n\nName: ${name}\nPhone: ${phone}\nService: ${service}\nDetails: ${details}`;
-      window.open(whatsapp(message), '_blank', 'noopener,noreferrer');
-      form.reset();
+      const clean = key => String(data.get(key) || '').trim();
+      const message = `Hello AQ Tech, I would like a quotation.\n\nName: ${clean('name')}\nPhone: ${clean('phone')}\nService: ${clean('service')}\nLocation: ${clean('location')}\nProperty: ${clean('property') || 'Not specified'}\nDetails: ${clean('details') || 'Not specified'}`;
+      // Same-tab navigation avoids popup blockers; preserve the customer's draft.
+      location.assign(whatsapp(message));
     });
+    form.querySelector('[type=submit]').disabled = false;
   }
 })();
