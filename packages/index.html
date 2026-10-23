@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"><meta name="referrer" content="strict-origin-when-cross-origin"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#0c1b33">
     <meta name="description" content="Compare AQ Tech analog and IP CCTV camera packages in Lahore. Explore camera counts, DVR/NVR choices, storage and tailored quotes.">
@@ -18,171 +18,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/style.css">
-    <style>
-      body { background: linear-gradient(180deg, #eff5ff 0%, #f9fbff 18%, #f5f7fb 100%); }
-      .page-hero {
-        padding: 56px 0 30px;
-      }
-      .crumb {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--muted);
-      }
-      .crumb a { color: var(--primary-deep); }
-      .page-hero h1 {
-        margin: 18px 0 12px;
-        font-size: clamp(2.6rem, 5vw, 4.2rem);
-        letter-spacing: -0.06em;
-      }
-      .page-hero p {
-        color: var(--ink-soft);
-        margin: 0;
-        font-size: 1.08rem;
-      }
-      .tabs {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin: 30px 0 26px;
-      }
-      .tab {
-        appearance: none;
-        border: 1px solid var(--line);
-        background: rgba(255,255,255,0.7);
-        color: var(--ink-soft);
-        border-radius: 12px;
-        min-height: 46px;
-        padding: 0 20px;
-        font-weight: 800;
-        cursor: pointer;
-      }
-      .tab[aria-selected="true"] {
-        background: var(--primary-soft);
-        color: var(--primary-deep);
-        border-color: rgba(11,102,255,0.2);
-      }
-      .tab-panels { position: relative; }
-      .tab-panel {
-        display: none;
-      }
-      .tab-panel.active {
-        display: block;
-      }
-      .package-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-      .package-card {
-        position: relative;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 24px 22px 20px;
-        background: rgba(255,255,255,0.82);
-        box-shadow: 0 18px 40px rgba(15,49,80,0.04);
-      }
-      .package-card.popular {
-        background: linear-gradient(180deg, rgba(11,102,255,0.06), rgba(255,255,255,0.9));
-        border-color: rgba(11,102,255,0.2);
-      }
-      .popular-ribbon {
-        position: absolute;
-        top: 18px;
-        right: -26px;
-        transform: rotate(28deg);
-        background: linear-gradient(135deg, var(--primary), #2d8bff);
-        color: #fff;
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 7px 36px;
-      }
-      .pkg-type {
-        display: inline-block;
-        margin-bottom: 8px;
-        font-size: 0.72rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--primary-deep);
-        font-weight: 800;
-      }
-      .package-card h3 {
-        margin: 0 0 10px;
-        font-size: 1.8rem;
-        letter-spacing: -0.05em;
-      }
-      .price {
-        display: flex;
-        align-items: end;
-        gap: 6px;
-        margin: 10px 0 8px;
-        font-size: clamp(2rem, 3vw, 2.5rem);
-        line-height: 1;
-        font-weight: 900;
-        letter-spacing: -0.06em;
-      }
-      .price small { font-size: .7rem; color: var(--muted); }
-      .fineprint {
-        color: var(--muted);
-        font-size: 0.8rem;
-        margin: 0 0 18px;
-      }
-      .package-card ul {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 24px;
-        display: grid;
-        gap: 10px;
-        color: var(--ink-soft);
-      }
-      .package-card li {
-        position: relative;
-        padding-left: 18px;
-      }
-      .package-card li::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-      }
-      .note {
-        margin-top: 16px;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-      .section {
-        padding: 90px 0;
-      }
-      .faq-list {
-        max-width: 850px;
-        display: grid;
-        gap: 14px;
-      }
-      .faq-list details {
-        border: 1px solid var(--line);
-        background: rgba(255,255,255,0.74);
-        border-radius: 18px;
-        padding: 0 20px;
-      }
-      .faq-list summary {
-        cursor: pointer;
-        list-style: none;
-        padding: 18px 0;
-        font-weight: 700;
-      }
-      .faq-list summary::-webkit-details-marker { display: none; }
-      .faq-list p { margin: 0 0 18px; color: var(--ink-soft); }
-      @media (max-width: 900px) {
-        .package-grid { grid-template-columns: 1fr; }
-      }
-    </style>
+    <link rel="stylesheet" href="../assets/packages.css">
     <script defer src="../assets/site.js"></script>
-  </head>
-  <body>
+  <link rel="stylesheet" href="../assets/review.css"></head>
+  <body class="page-packages"><a class="a11y-skip" href="#main">Skip to content</a>
     <header class="nav-shell site-header">
       <div class="topbar">
         <div class="container">
@@ -209,7 +48,7 @@
       </div>
     </header>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <section class="page-hero">
         <div class="container">
           <div class="crumb"><a href="/">Home</a> <span>/</span> <span>CCTV Packages</span></div>
@@ -218,11 +57,11 @@
 
           <div class="tabs" role="tablist" aria-label="CCTV package types">
             <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="analog-panel" id="analog-tab">Analog CCTV</button>
-            <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="ip-panel" id="ip-tab">IP CCTV</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="ip-panel" id="ip-tab" tabindex="-1">IP CCTV</button>
           </div>
 
           <div class="tab-panels">
-            <div class="tab-panel active" id="analog-panel" role="tabpanel" aria-labelledby="analog-tab">
+            <div class="tab-panel active" id="analog-panel" role="tabpanel" tabindex="0" aria-labelledby="analog-tab">
               <div class="package-grid">
                 <article class="package-card">
                   <span class="pkg-type">Analog CCTV · 01</span>
@@ -408,26 +247,5 @@
     <a class="whatsapp-float" href="https://wa.me/923062142514?text=Hello%20AQ%20Tech%2C%20I%20need%20help%20with%20a%20project." aria-label="Chat with AQ Tech on WhatsApp" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 32 32" aria-hidden="true" fill="currentColor"><path d="M16.02 2A13.88 13.88 0 0 0 4.05 23l-1.94 7.05 7.25-1.9A14 14 0 1 0 16.02 2zm0 25.36a11.3 11.3 0 0 1-5.76-1.58l-.42-.25-4.3 1.12 1.14-4.17-.28-.43A11.39 11.39 0 1 1 16.02 27.36zm6.24-8.53c-.34-.17-2.02-1-2.33-1.11-.32-.12-.54-.17-.77.17-.23.34-.88 1.1-1.08 1.33-.2.23-.4.25-.75.08-.34-.17-1.45-.54-2.76-1.7-1.03-.92-1.72-2.05-1.92-2.4-.2-.34-.02-.53.15-.7.16-.16.34-.4.52-.6.17-.2.23-.35.34-.57.11-.23.06-.43-.03-.6-.08-.17-.77-1.85-1.05-2.54-.28-.67-.56-.58-.77-.59h-.66c-.23 0-.6.09-.91.43-.31.35-1.19 1.16-1.19 2.83s1.22 3.28 1.39 3.5c.17.23 2.4 3.66 5.82 5.14.81.35 1.44.56 1.94.72.82.27 1.58.23 2.17.14.66-.1 2.03-.83 2.31-1.63.28-.8.28-1.49.2-1.63-.09-.14-.31-.23-.65-.4z"/></svg>
     </a>
-
-    <script>
-      const tabs = document.querySelectorAll('.tab');
-      const panels = document.querySelectorAll('.tab-panel');
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const target = tab.getAttribute('aria-controls');
-
-          tabs.forEach(item => {
-            const selected = item === tab;
-            item.setAttribute('aria-selected', String(selected));
-          });
-
-          panels.forEach(panel => {
-            const active = panel.id === target;
-            panel.classList.toggle('active', active);
-          });
-        });
-      });
-    </script>
   </body>
 </html>

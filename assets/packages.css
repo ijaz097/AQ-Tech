@@ -1,0 +1,160 @@
+body { background: linear-gradient(180deg, #eff5ff 0%, #f9fbff 18%, #f5f7fb 100%); }
+      .page-hero {
+        padding: 56px 0 30px;
+      }
+      .crumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--muted);
+      }
+      .crumb a { color: var(--primary-deep); }
+      .page-hero h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(2.6rem, 5vw, 4.2rem);
+        letter-spacing: -0.06em;
+      }
+      .page-hero p {
+        color: var(--ink-soft);
+        margin: 0;
+        font-size: 1.08rem;
+      }
+      .tabs {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 30px 0 26px;
+      }
+      .tab {
+        appearance: none;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.7);
+        color: var(--ink-soft);
+        border-radius: 12px;
+        min-height: 46px;
+        padding: 0 20px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+      .tab[aria-selected="true"] {
+        background: var(--primary-soft);
+        color: var(--primary-deep);
+        border-color: rgba(11,102,255,0.2);
+      }
+      .tab-panels { position: relative; }
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.active {
+        display: block;
+      }
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+      .package-card {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px 22px 20px;
+        background: rgba(255,255,255,0.82);
+        box-shadow: 0 18px 40px rgba(15,49,80,0.04);
+      }
+      .package-card.popular {
+        background: linear-gradient(180deg, rgba(11,102,255,0.06), rgba(255,255,255,0.9));
+        border-color: rgba(11,102,255,0.2);
+      }
+      .popular-ribbon {
+        position: absolute;
+        top: 18px;
+        right: -26px;
+        transform: rotate(28deg);
+        background: linear-gradient(135deg, var(--primary), #2d8bff);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 7px 36px;
+      }
+      .pkg-type {
+        display: inline-block;
+        margin-bottom: 8px;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--primary-deep);
+        font-weight: 800;
+      }
+      .package-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.8rem;
+        letter-spacing: -0.05em;
+      }
+      .price {
+        display: flex;
+        align-items: end;
+        gap: 6px;
+        margin: 10px 0 8px;
+        font-size: clamp(2rem, 3vw, 2.5rem);
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -0.06em;
+      }
+      .price small { font-size: .7rem; color: var(--muted); }
+      .fineprint {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin: 0 0 18px;
+      }
+      .package-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 24px;
+        display: grid;
+        gap: 10px;
+        color: var(--ink-soft);
+      }
+      .package-card li {
+        position: relative;
+        padding-left: 18px;
+      }
+      .package-card li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+      }
+      .note {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .section {
+        padding: 90px 0;
+      }
+      .faq-list {
+        max-width: 850px;
+        display: grid;
+        gap: 14px;
+      }
+      .faq-list details {
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.74);
+        border-radius: 18px;
+        padding: 0 20px;
+      }
+      .faq-list summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 18px 0;
+        font-weight: 700;
+      }
+      .faq-list summary::-webkit-details-marker { display: none; }
+      .faq-list p { margin: 0 0 18px; color: var(--ink-soft); }
+      @media (max-width: 900px) {
+        .package-grid { grid-template-columns: 1fr; }
+      }
